@@ -15,6 +15,15 @@ registerApplication({
   activeWhen: ["/"]
 });
 
+registerApplication({
+  name: "@test/app2",
+  app: () => System.import("http://localhost:8300/test-app2.js"),
+  activeWhen: [location => location.pathname.startsWith("/about")],
+  customProps: {
+   token:"Passed token"
+}
+});
+
 start({
   urlRerouteOnly: true,
 });
